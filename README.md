@@ -29,9 +29,8 @@ npm install slugify-mongodb
 
 ## Usage
 
-*Common Js*
-
-```file: example.js
+Common Js
+file: example.js
 
 const { slugify, generateUniqueSlug } = require('slugify-mongodb');
 const mongoose = require('mongoose');
