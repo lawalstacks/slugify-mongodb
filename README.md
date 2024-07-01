@@ -24,8 +24,9 @@ A lightweight library for generating URL-friendly slugs and ensuring their uniqu
 
 Install via npm:
 
-```bash
+
 npm install slugify-mongodb
+
 
 ## Usage
 
