@@ -25,13 +25,14 @@ A lightweight library for generating URL-friendly slugs and ensuring their uniqu
 Install via npm:
 
 
-npm install slugify-mongodb
+```npm install slugify-mongodb
 
 
 ## Usage
 
 Common Js
-file: example.js
+
+```file: example.js
 
 const { slugify, generateUniqueSlug } = require('slugify-mongodb');
 const mongoose = require('mongoose');
@@ -46,7 +47,7 @@ const ExampleModel = mongoose.model('Example', new mongoose.Schema({ slug: Strin
 })();
 
 
-*ES6 Modules*
+ES6 Modules
 
 ```file: example.mjs
 
@@ -65,5 +66,10 @@ const ExampleModel = mongoose.model('Example', new mongoose.Schema({ slug: Strin
 
 ## API
 
-
-slugify(text)Converts the given text to a URL-friendly slug.Parameters:text (string): The text to be slugified.Returns:(string): The slugified text.generateUniqueSlug(text, Model)Generates a unique slug based on the provided text and checks for uniqueness within the provided Mongoose model.Parameters:text (string): The text to be slugified.Model (Mongoose Model): The Mongoose model to check for existing slugs.Returns:(Promise): The unique slug.
+slugify(text)
+Converts the given text to a URL-friendly slug.
+Parameters:text (string): The text to be slugified.
+Returns:(string): The slugified text.
+generateUniqueSlug(text, Model)Generates a unique slug based on the provided text and checks for uniqueness within the provided Mongoose model.
+Parameters:text (string): The text to be slugified.
+Model (Mongoose Model): The Mongoose model to check for existing slugs.Returns:(Promise): The unique slug.
