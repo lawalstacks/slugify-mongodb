@@ -2,6 +2,21 @@
 
 A library to generate URL-friendly slugs and ensure their uniqueness in MongoDB.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [CommonJS](#commonjs)
+  - [ES Modules](#es-modules)
+- [API](#api)
+  - [`slugify`](#slugify)
+  - [`generateUniqueSlug`](#generateuniqueslug)
+- [Examples](#examples)
+  - [Basic Usage](#basic-usage)
+  - [Generating Unique Slugs](#generating-unique-slugs)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 Install via npm:
@@ -118,13 +133,46 @@ async function createUniqueSlug(text) {
 createUniqueSlug('Hello World!');
 ```
 
+## Examples
+
+### Basic Usage
+
+```javascript
+// Import and use slugify function
+const { slugify } = require('slugify-mongodb');
+
+const slug = slugify('Example Text');
+console.log(slug); // Output: 'example-text'
+```
+
+### Generating Unique Slugs
+
+```javascript
+const mongoose = require('mongoose');
+const { generateUniqueSlug } = require('slugify-mongodb');
+
+const ExampleModel = mongoose.model('Example', new mongoose.Schema({ slug: String }));
+
+async function createUniqueSlug(text) {
+  const uniqueSlug = await generateUniqueSlug(text, ExampleModel);
+  console.log(uniqueSlug); // Output: 'example-text' or 'example-text-1'
+}
+
+createUniqueSlug('Example Text');
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements.
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-```
-
-### Summary
-
-- **CommonJS Import:** Import the module and use it as `slugifyMongoDB.slugify` and `slugifyMongoDB.generateUniqueSlug`.
-- **ES Modules Import:** Import functions directly and use them as `slugify` and `generateUniqueSlug`.
 
