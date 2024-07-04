@@ -26,8 +26,7 @@ export const generateUniqueSlug = async (text, Model) => {
     let count = 1;
 
 	if(!Model){
-		console.error({error:"generateUniqueSlug(string,Model:mongodb model - function parameter not defined!)"});
-		return;
+		console.error({"error":"generateUniqueSlug(string,Model:mongodb model- func params not defined!)"});                       return;
 	}
 
 while (await Model.findOne({ slug: uniqueSlug })) {
