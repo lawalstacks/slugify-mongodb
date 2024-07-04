@@ -1,0 +1,7 @@
+node_modules/
+test/
+.eslintrc.json
+.npmrc
+package-lock.json
+*.log
+.env
