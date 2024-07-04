@@ -1,6 +1,6 @@
 {
   "name": "slugify-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight library for generating URL-friendly slugs and ensuring their uniqueness in MongoDB.",
   "type": "module",
   "main": "./src/index.js",
