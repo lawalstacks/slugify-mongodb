@@ -2,11 +2,16 @@
   "name": "slugify-mongodb",
   "version": "1.0.0",
   "description": "A lightweight library for generating URL-friendly slugs and ensuring their uniqueness in MongoDB.",
-  "main": "src/slugify.js",
-  "module": "src/slugify-v2.js",
+    "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/slugify.mjs",
+      "require": "./src/slugify.js"
+    }
+  },
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -32,6 +37,6 @@
   "devDependencies": {
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
-    "mocha": "^10.5.2",
+    "mocha": "^10.5.2"
   }
 }
