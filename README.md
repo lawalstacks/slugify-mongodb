@@ -14,6 +14,7 @@ A library to generate URL-friendly slugs and ensure their uniqueness in MongoDB.
 - [Examples](#examples)
   - [Basic Usage](#basic-usage)
   - [Generating Unique Slugs](#generating-unique-slugs)
+  - [See Perfect Example](#generateUniqueSlug)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -72,6 +73,7 @@ async function createUniqueSlug(text) {
 
 createUniqueSlug('My Example Text');
 ```
+
 
 ## API
 
@@ -159,6 +161,68 @@ async function createUniqueSlug(text) {
 }
 
 createUniqueSlug('Example Text');
+```
+### See Perfect Example
+```javasript
+//create posts in your backend
+const Post = require('../model/postModel');
+const User = require('../model/userModel');
+const Slug = require('slugify-mongodb');
+
+const create = async (req,res)=> {
+    const {postedBy, text, title, img, video} = req.body
+    try {
+        if (!postedBy || !text || !title) {
+            res.status(400).json({error: 'posted by, title and text field are required'});
+        }
+        const user = await User.findById(postedBy);
+        if (!user) {
+            res.status(400).json({error: 'user not found'});
+        }
+        if (user._id.toString() !== req.user._id.toString()) {
+            res.status(400).json({error: "unauthorized to create steeze post"})
+            return;
+        }
+        const maxLength = 500;
+        if (text.length > maxLength) {
+            res.status(400).json({error: 'maximum text character is 500'});
+        }
+        let slug = await Slug.generateUniqueSlug(title,Post);
+        const newPost = new Post({
+            postedBy,
+            title,
+            slug,
+            text,
+            img,
+            video
+        })
+            await newPost.save();
+            await User.findByIdAndUpdate(user._id, {$push: {posts: newPost}})
+            res.status(201).json(newPost)
+    } catch (error) {
+        res.status(500).json({error: "unable to create post"})
+        console.log(error)
+    }
+}
+
+
+```
+##Output
+```JSON
+{
+  "postedBy": "667edc045fb32d7ffed1a5fe",
+  "title": "Todays post",
+  "slug": "todays-post-2",
+  "text": "testing post 4",
+  "img": "image uploaded",
+  "video": "video uploaded",
+  "likes": [],
+  "_id": "6687fffa2a2b81c150749efd",
+  "replies": [],
+  "createdAt": "2024-07-05T14:15:22.339Z",
+  "updatedAt": "2024-07-05T14:15:22.339Z",
+  "__v": 0
+}
 ```
 
 ## Contributing
