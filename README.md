@@ -163,7 +163,8 @@ async function createUniqueSlug(text) {
 createUniqueSlug('Example Text');
 ```
 ### See Perfect Example
-```javasript
+
+```javascript
 //create posts in your backend
 const Post = require('../model/postModel');
 const User = require('../model/userModel');
