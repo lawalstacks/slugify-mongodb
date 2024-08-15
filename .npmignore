@@ -1,6 +1,8 @@
 node_modules/
 test/
 .eslintrc.json
+.eslintignore
+.eslintrc
 .npmrc
 package-lock.json
 *.log
