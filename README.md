@@ -16,8 +16,8 @@ A library to generate URL-friendly slugs and ensure their uniqueness in MongoDB.
 - [Examples](#examples)
   - [Basic Usage](#basic-usage)
   - [Generating Unique Slugs](#generating-unique-slugs)
-  - [See Perfect Example](#generateUniqueSlug)
-  - [Advance Feature Usage](#advance-usage)
+  - [See Perfect Example](#see-perfect-example)
+  - [Advance Feature Usage](#advance-feature-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
