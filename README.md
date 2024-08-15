@@ -11,10 +11,13 @@ A library to generate URL-friendly slugs and ensure their uniqueness in MongoDB.
 - [API](#api)
   - [`slugify`](#slugify)
   - [`generateUniqueSlug`](#generateuniqueslug)
+- [Options](#options)
+- [Advanced Features](#advanced-features)
 - [Examples](#examples)
-  - [Basic Usage](#basic-usage)
+  - [Basic Usage](#basic-usage
   - [Generating Unique Slugs](#generating-unique-slugs)
   - [See Perfect Example](#generateUniqueSlug)
+  - [Advance Feature:Usage](#advance-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -135,6 +138,65 @@ async function createUniqueSlug(text) {
 createUniqueSlug('Hello World!');
 ```
 
+## Options
+
+The `slugify` function accepts an options object to customize its behavior. If no options are provided, default values will be used.
+
+### Default Behavior
+
+- `separator` (default: `'-'`)
+- `lower` (default: `true`)
+- `preserveCase` (default: `false`)
+- `maxLength` (default: `Infinity`)
+- `reservedWords` (default: `[]`)
+
+### Custom Options
+
+```javascript
+const slug = slugify('My Example Text', {
+  separator: '_',
+  preserveCase: true,
+  maxLength: 15,
+});
+console.log(slug); // Output: 'My_Example_Text'
+```
+
+## Advanced Features
+
+### Custom Separator
+
+```javascript
+const slug = slugify('My Example Text', { separator: '_' });
+console.log(slug); // Output: 'my_example_text'
+```
+
+### Preserve Case
+
+```javascript
+const slug = slugify('My Example Text', { preserveCase: true });
+console.log(slug); // Output: 'My-Example-Text'
+```
+
+### Maximum Length
+
+```javascript
+const slug = slugify('My Example Text', { maxLength: 10 });
+console.log(slug); // Output: 'my-exampl'
+```
+
+### Reserved Words
+
+```javascript
+const slug = slugify('admin', { reservedWords: ['admin', 'root'] });
+console.log(slug); // Output: 'admin-<timestamp>'
+```
+
+### Generating Unique Slugs
+
+```javascript
+const uniqueSlug = await generateUniqueSlug('My Example Text', ExampleModel);
+console.log(uniqueSlug); // Output: 'my-example-text-1' if 'my-example-text' already exists
+```
 ## Examples
 
 ### Basic Usage
@@ -224,6 +286,30 @@ const create = async (req,res)=> {
   "updatedAt": "2024-07-05T14:15:22.339Z",
   "__v": 0
 }
+```
+### Advance Feature:Usage
+
+Without Options
+
+The function will use default values if no options are provided:
+
+```javascript
+const { slugify } = require('slugify-mongodb');
+
+const slug = slugify('My Example Text');
+console.log(slug); // Output: 'my-example-text'
+```
+ With Custom Options
+
+Users can still customize the behavior by providing an options object:
+
+```javascript
+const slug = slugify('My Example Text', {
+  separator: '_',
+  preserveCase: true,
+  maxLength: 15,
+});
+console.log(slug); // Output: 'My_Example_Text'
 ```
 
 ## Contributing
