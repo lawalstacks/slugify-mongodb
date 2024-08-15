@@ -14,10 +14,10 @@ A library to generate URL-friendly slugs and ensure their uniqueness in MongoDB.
 - [Options](#options)
 - [Advanced Features](#advanced-features)
 - [Examples](#examples)
-  - [Basic Usage](#basic-usage
+  - [Basic Usage](#basic-usage)
   - [Generating Unique Slugs](#generating-unique-slugs)
   - [See Perfect Example](#generateUniqueSlug)
-  - [Advance Feature:Usage](#advance-usage)
+  - [Advance Feature Usage](#advance-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -287,7 +287,7 @@ const create = async (req,res)=> {
   "__v": 0
 }
 ```
-### Advance Feature:Usage
+### Advance Feature Usage
 
 Without Options
 
