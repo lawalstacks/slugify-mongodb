@@ -44,6 +44,7 @@ const generateUniqueSlug = async (text, Model, options = {}) => {
 if(!Model){
 console.error({"error":"generateUniqueSlug(string,Model:mongodb model- func params not defined!)"});
 return;
+}
   while (await Model.findOne({ slug: uniqueSlug })) {
     uniqueSlug = `${slug}-${count}`;
     count++;
